@@ -1,4 +1,4 @@
-package app.nocamelstyle.birthdatelist
+package app.nocamelstyle.birthdatelist.utils
 
 import android.content.Context
 import androidx.core.content.edit
