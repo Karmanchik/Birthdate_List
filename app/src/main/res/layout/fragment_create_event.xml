@@ -1,44 +1,56 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:orientation="vertical"
     tools:context=".ui.create.CreateEventFragment">
 
-    <TextView
-        android:id="@+id/textView"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Заполните анкету" />
+    <data>
+        <variable
+            name="item"
+            type="app.nocamelstyle.birthdatelist.models.Event" />
+    </data>
 
-    <EditText
-        android:id="@+id/editTextTextPersonName"
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:ems="10"
-        android:hint="Имя"
-        android:inputType="textPersonName" />
+        android:layout_height="match_parent"
+        android:orientation="vertical">
 
-    <TextView
-        android:id="@+id/editTextTextPersonName2"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:ems="10"
-        android:hint="Дата"
-        android:inputType="textPersonName" />
+        <TextView
+            android:id="@+id/titleView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Заполните анкету" />
 
-    <EditText
-        android:id="@+id/editTextTextPersonName3"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:ems="10"
-        android:hint="Событие"
-        android:inputType="textPersonName" />
+        <EditText
+            android:id="@+id/nameView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:text="@={item.personName}"
+            android:hint="Имя"
+            android:inputType="textPersonName" />
 
-    <Button
-        android:id="@+id/button"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Создать" />
-</LinearLayout>
+        <TextView
+            android:id="@+id/dateView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:hint="Дата"
+            android:inputType="textPersonName" />
+
+        <EditText
+            android:id="@+id/descriptionView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:hint="Событие"
+            android:text="@={item.description}"
+            android:inputType="textPersonName" />
+
+        <Button
+            android:id="@+id/saveView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Создать" />
+    </LinearLayout>
+
+</layout>
