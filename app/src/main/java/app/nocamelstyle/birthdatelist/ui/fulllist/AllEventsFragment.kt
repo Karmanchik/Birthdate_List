@@ -19,11 +19,6 @@ class AllEventsFragment : FragmentModule<FragmentAllEventsBinding>() {
 
     override fun bindViews(view: View, savedInstanceState: Bundle?) {
         dataBinding.item = AllEventsViewModel()
-        dataBinding.item?.events?.observe({lifecycle}, ::showList)
-    }
-
-    private fun showList(list: List<Event>) {
-        dataBinding.eventsList.adapter = EventsAdapter(list)
     }
 
     override fun getLayoutRes(): Int = R.layout.fragment_all_events

@@ -5,6 +5,7 @@
     tools:context=".ui.fulllist.AllEventsFragment">
 
     <data>
+
         <variable
             name="item"
             type="app.nocamelstyle.birthdatelist.ui.fastlist.FastEventsViewModel" />
@@ -18,7 +19,8 @@
             android:id="@+id/eventsList"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager" />
+            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+            app:list="@{item.events}" />
     </FrameLayout>
 
 </layout>

@@ -2,6 +2,9 @@ package app.nocamelstyle.birthdatelist.ui.fastlist
 
 import android.os.Bundle
 import android.view.View
+import androidx.databinding.BindingAdapter
+import androidx.lifecycle.MutableLiveData
+import androidx.recyclerview.widget.RecyclerView
 import app.nocamelstyle.birthdatelist.R
 import app.nocamelstyle.birthdatelist.databinding.FragmentFastEventsBinding
 import app.nocamelstyle.birthdatelist.models.Event
@@ -15,11 +18,6 @@ class FastEventsFragment : FragmentModule<FragmentFastEventsBinding>() {
 
     override fun bindViews(view: View, savedInstanceState: Bundle?) {
         dataBinding.item = FastEventsViewModel()
-        dataBinding.item?.events?.observe({lifecycle}, ::showList)
-    }
-
-    private fun showList(list: List<Event>) {
-        dataBinding.eventsList.adapter = EventsAdapter(list)
     }
 
     override fun onStart() {
