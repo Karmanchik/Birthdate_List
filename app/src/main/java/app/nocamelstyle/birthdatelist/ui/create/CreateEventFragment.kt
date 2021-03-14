@@ -6,12 +6,16 @@ import app.nocamelstyle.birthdatelist.*
 import app.nocamelstyle.birthdatelist.databinding.FragmentCreateEventBinding
 import app.nocamelstyle.birthdatelist.models.Event
 import app.nocamelstyle.birthdatelist.utils.FragmentModule
+import kotlinx.coroutines.GlobalScope
+import kotlinx.coroutines.launch
 
 
 class CreateEventFragment : FragmentModule<FragmentCreateEventBinding>() {
 
+    var date: Long = 0
+
     override fun bindViews(view: View, savedInstanceState: Bundle?) {
-        var date: Long = 0
+
 
         dataBinding.apply {
             item = Event()
@@ -24,10 +28,19 @@ class CreateEventFragment : FragmentModule<FragmentCreateEventBinding>() {
             }
 
             saveView.setOnClickListener {
-                val event = item?.apply { unixtime = date } ?: return@setOnClickListener
-                App.setting.addEvent(event)
-                toast("Saved")
+                saveEvent()
             }
+        }
+    }
+
+    fun saveEvent() {
+        dataBinding.apply {
+            val event = item?.apply { unixtime = date } ?: return
+            GlobalScope.launch {
+                App.database?.eventsDao()?.insert(event)
+            }
+            //App.setting.addEvent(event)
+            toast("Saved")
         }
     }
 
