@@ -2,6 +2,8 @@ package app.nocamelstyle.birthdatelist.ui.create
 
 import android.os.Bundle
 import android.view.View
+import androidx.activity.result.contract.ActivityResultContracts
+import androidx.activity.result.launch
 import app.nocamelstyle.birthdatelist.*
 import app.nocamelstyle.birthdatelist.databinding.FragmentCreateEventBinding
 import app.nocamelstyle.birthdatelist.models.Event
@@ -41,7 +43,12 @@ class CreateEventFragment : FragmentModule<FragmentCreateEventBinding>() {
             }
             //App.setting.addEvent(event)
             toast("Saved")
+            //camera.launch()
         }
+    }
+
+    val camera = registerForActivityResult(ActivityResultContracts.TakePicturePreview()) { bitmap ->
+        dataBinding.imageView.setImageBitmap(bitmap)
     }
 
     override fun getLayoutRes(): Int = R.layout.fragment_create_event
