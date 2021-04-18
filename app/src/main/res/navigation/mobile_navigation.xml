@@ -7,7 +7,7 @@
 
     <fragment
         android:id="@+id/navigation_home"
-        android:name="app.nocamelstyle.birthdatelist.ui.create.CreateEventFragment"
+        android:name="app.nocamelstyle.birthdatelist.ui.createcontainer.CreateContainerFragment"
         tools:layout="@layout/fragment_create_event"
         android:label="@string/title_home" />
 

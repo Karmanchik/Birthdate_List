@@ -6,7 +6,7 @@
     <data>
         <variable
             name="item"
-            type="app.nocamelstyle.birthdatelist.models.Event" />
+            type="app.nocamelstyle.birthdatelist.models.Folder" />
     </data>
 
     <LinearLayout
@@ -28,7 +28,7 @@
             android:id="@+id/titleView"
             android:layout_marginBottom="15dp"
             android:gravity="center"
-            android:text="Новое событие"
+            android:text="Новая папка"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:textSize="22sp" />
@@ -42,21 +42,7 @@
             <com.google.android.material.textfield.TextInputEditText
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:hint="Имя"
-                android:text="@={item.personName}" />
-
-        </com.google.android.material.textfield.TextInputLayout>
-
-        <com.google.android.material.textfield.TextInputLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="12dp">
-
-            <com.google.android.material.textfield.TextInputEditText
-                android:layout_width="match_parent"
-                android:id="@+id/dateView"
-                android:layout_height="wrap_content"
-                android:hint="Дата" />
+                android:hint="Название" />
 
         </com.google.android.material.textfield.TextInputLayout>
 
@@ -74,12 +60,14 @@
 
         </com.google.android.material.textfield.TextInputLayout>
 
-        <TextView
-            android:id="@+id/textView"
-            android:layout_width="match_parent"
-            android:layout_height="0dp"
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/eventsList"
             android:layout_weight="1"
-            android:text="" />
+            tools:itemCount="4"
+            android:layout_marginBottom="8dp"
+            tools:listitem="@layout/item_event"
+            android:layout_width="match_parent"
+            android:layout_height="0dp" />
 
         <TextView
             android:id="@+id/saveView"

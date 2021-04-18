@@ -17,4 +17,8 @@ data class Event(
     @SuppressLint("SimpleDateFormat")
     fun getFormattedDate(): String =
         SimpleDateFormat("dd/MM/yyyy").format(Date(unixtime * 1000))
+
+    fun isEmpty(): Boolean =
+        personName.isEmpty() || description.isEmpty() || unixtime == 0L
+
 }

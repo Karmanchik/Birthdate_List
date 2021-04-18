@@ -1,4 +1,4 @@
-package app.nocamelstyle.birthdatelist.ui.create
+package app.nocamelstyle.birthdatelist.ui.createevent
 
 import android.os.Bundle
 import android.view.View
@@ -24,7 +24,7 @@ class CreateEventFragment : FragmentModule<FragmentCreateEventBinding>() {
 
             dateView.setOnClickListener {
                 requireContext().getDateFromDateDialog { selectedDate, formattedDate ->
-                    dateView.text = formattedDate
+                    dateView.setText(formattedDate)
                     date = selectedDate.time / 1000
                 }
             }
@@ -35,15 +35,18 @@ class CreateEventFragment : FragmentModule<FragmentCreateEventBinding>() {
         }
     }
 
-    fun saveEvent() {
+    private fun saveEvent() {
         dataBinding.apply {
             val event = item?.apply { unixtime = date } ?: return
+            if (event.isEmpty()) {
+                toast("Заполните все поля!")
+                return
+            }
             GlobalScope.launch {
                 App.database?.eventsDao()?.insert(event)
             }
-            //App.setting.addEvent(event)
             toast("Saved")
-            //camera.launch()
+            camera.launch()
         }
     }
 

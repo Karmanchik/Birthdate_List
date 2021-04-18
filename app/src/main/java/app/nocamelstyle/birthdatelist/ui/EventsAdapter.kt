@@ -14,7 +14,7 @@ class EventsAdapter(var events: List<Event>) : RecyclerView.Adapter<EventsAdapte
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): Holder {
         val inflater = LayoutInflater.from(parent.context)
-        return Holder(ItemEventBinding.inflate(inflater))
+        return Holder(ItemEventBinding.inflate(inflater, parent, false))
     }
 
     override fun getItemCount(): Int =

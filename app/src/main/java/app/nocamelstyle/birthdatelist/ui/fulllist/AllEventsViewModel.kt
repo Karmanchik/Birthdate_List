@@ -12,7 +12,7 @@ class AllEventsViewModel {
 
     fun update() {
         GlobalScope.launch {
-            events.postValue(App.database?.eventsDao()?.getAll())//App.setting.events
+            events.postValue(App.database?.eventsDao()?.getAll())
         }
     }
 
