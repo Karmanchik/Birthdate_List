@@ -19,13 +19,27 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
-        <androidx.recyclerview.widget.RecyclerView
-            android:visibility="@{item.events.empty ? View.GONE : View.VISIBLE}"
-            android:id="@+id/eventsList"
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-            app:list="@{item.events}" />
+            android:orientation="vertical">
+
+            <EditText
+                android:id="@+id/editTextTextPersonName"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:ems="10"
+                android:inputType="textPersonName"
+                android:text="Name" />
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/eventsList"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:visibility="@{item.events.empty ? View.GONE : View.VISIBLE}"
+                app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                app:list="@{item.events}" />
+        </LinearLayout>
 
         <LinearLayout
             android:visibility="@{item.events.empty ? View.VISIBLE : View.GONE}"
